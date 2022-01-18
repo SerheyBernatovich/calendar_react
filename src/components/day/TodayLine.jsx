@@ -21,12 +21,7 @@ const TodayLine = () => {
     };
   }, []);
 
-  return (
-    <div className="current-day-line" style={lineHeight}>
-      <i className="fas fa-caret-right current-day-line__triangle"></i>
-      <i className="fas fa-caret-left current-day-line__triangle"></i>
-    </div>
-  );
+  return <div className="current-day-line" style={lineHeight}></div>;
 };
 
 export default TodayLine;
