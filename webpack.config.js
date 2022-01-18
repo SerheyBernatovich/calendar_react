@@ -2,18 +2,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
-
+const CopyPlugin = require('copy-webpack-plugin');
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
   const config = {
     entry: './src/index.jsx',
     output: {
       filename: 'bundle.js',
+      publicPath: '/',
     },
     module: {
       rules: [
         {
-          test: /.jsx?$/,
+          test: /.(js|jsx?)$/,
+          exclude: /node_modules/,
           use: ['babel-loader'],
         },
         {
@@ -30,6 +32,9 @@ module.exports = (env, argv) => {
       extensions: ['.js', '.jsx'],
     },
     plugins: [
+      new CopyPlugin({
+        patterns: [{ from: '_redirects', to: '' }],
+      }),
       new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
@@ -37,10 +42,15 @@ module.exports = (env, argv) => {
       }),
     ],
     devServer: {
+      historyApiFallback: true,
+      open: true,
       hot: true,
+      port: 8080,
     },
   };
-
+  if (isProduction) {
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  }
   if (isProduction) {
     config.plugins.push(
       new MiniCssExtractPlugin({
@@ -48,6 +58,5 @@ module.exports = (env, argv) => {
       })
     );
   }
-
   return config;
 };
