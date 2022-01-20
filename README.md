@@ -9,8 +9,9 @@ _The tech stack is:_
 - [Flexbox](https://en.wikipedia.org/wiki/CSS_Flexible_Box_Layout)
 - [SASS](https://sass-lang.com/)
 - [BEM methodology](https://en.bem.info/methodology/)
-- Mobile first
-- JavaScript
-- React
+- [moment](https://momentjs.com/)
+- [JavaScript](https://ru.wikipedia.org/wiki/JavaScript)
+- [React](https://ru.wikipedia.org/wiki/React)
+- [Webpack](https://ru.wikipedia.org/wiki/Webpack)
 
 created by Serhey Bernatovich
