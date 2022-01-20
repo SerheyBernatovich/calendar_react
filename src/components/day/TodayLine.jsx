@@ -5,7 +5,7 @@ const TodayLine = () => {
   let currentMinute = new Date().getMinutes();
 
   const [lineHeight, setLineHeight] = React.useState({
-    top: `${currentHour * 60 + (currentMinute - 15)}px`,
+    top: `${currentHour * 60 + (currentMinute - 10)}px`,
   });
 
   React.useEffect(() => {
@@ -13,7 +13,7 @@ const TodayLine = () => {
       currentHour = new Date().getHours();
       currentMinute = new Date().getMinutes();
 
-      setLineHeight({ top: `${currentHour * 60 + (currentMinute - 15)}px` });
+      setLineHeight({ top: `${currentHour * 60 + (currentMinute - 10)}px` });
     }, 60000);
 
     return () => {
