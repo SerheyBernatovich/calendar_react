@@ -23,6 +23,10 @@ const Modal = ({ onCreateEvent, closeModal }) => {
       [name]: value,
     });
   };
+  const handleSub = (e) => {
+    onCreateEvent(e, eventData);
+    closeModal(e);
+  };
 
   return (
     <div className="modal overlay" onClick={closeModal}>
@@ -31,13 +35,7 @@ const Modal = ({ onCreateEvent, closeModal }) => {
           <button className="create-event__close-btn" onClick={closeModal}>
             +
           </button>
-          <form
-            onSubmit={(e) => {
-              onCreateEvent(e, eventData);
-              closeModal(e);
-            }}
-            className="event-form"
-          >
+          <form onSubmit={handleSub} className="event-form">
             <input
               onChange={handleChange}
               value={title}
