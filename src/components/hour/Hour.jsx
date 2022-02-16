@@ -13,17 +13,14 @@ const Hour = ({ dataHour, hourEvents, removeEvent }) => (
         dateTo.getMinutes()
       )}`;
 
-      return (
-        <Event
-          key={id}
-          height={(dateTo.getTime() - dateFrom.getTime()) / (1000 * 60)}
-          marginTop={dateFrom.getMinutes()}
-          time={`${eventStart} - ${eventEnd}`}
-          title={title}
-          id={id}
-          removeEvent={removeEvent}
-        />
-      );
+      let some = {
+        title,
+        height: (dateTo.getTime() - dateFrom.getTime()) / (1000 * 60),
+        time: `${eventStart} - ${eventEnd}`,
+        marginTop: dateFrom.getMinutes(),
+        id,
+      };
+      return <Event some={some} key={id} removeEvent={removeEvent} />;
     })}
   </div>
 );

@@ -3,7 +3,8 @@ import React from 'react';
 import './event.scss';
 import EventDeleteModal from './EventDeleteModal.jsx';
 
-const Event = ({ height, marginTop, title, time, id, removeEvent }) => {
+const Event = ({ some, removeEvent }) => {
+  const { height, marginTop, title, time, id } = some;
   const eventStyle = {
     height,
     marginTop,
